@@ -1,20 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+
+
 const Total = props => {
   return (
     <div className="content">
-      <h4>Total Amount: ${props.carStore.price}</h4>
-      {/* + props.additionalPrice */}
+      <h4>Total Amount: ${props.carStore.price + props.addPrice}</h4>
+
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-    carStore: state.car
 
+  return {
+    carStore: state.car,
+    addPrice: state.additionalPrice
 
   }
 }

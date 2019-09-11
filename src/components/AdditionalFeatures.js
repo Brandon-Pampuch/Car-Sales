@@ -20,7 +20,6 @@ const AdditionalFeatures = props => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     carStore: state.store
 

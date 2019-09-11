@@ -9,24 +9,20 @@ import { carReducer } from './reducers/index';
 import { Provider } from 'react-redux';
 
 
-function reducer() {
-  return {
-    title: 'Hello world! I\'m in the Redux store!',
-  }
-}
 
 const store = createStore(carReducer);
 
 const App = () => {
 
+  console.log("in app", store)
 
-  const removeFeature = item => {
-    // dispatch an action here to remove an item
-  };
+  // const removeFeature = item => {
+  //   // dispatch an action here to remove an item
+  // };
 
-  const buyItem = item => {
-    // dipsatch an action here to add an item
-  };
+  // const buyItem = item => {
+  //   // dipsatch an action here to add an item
+  // };
 
   return (
     <Provider store={store}>
