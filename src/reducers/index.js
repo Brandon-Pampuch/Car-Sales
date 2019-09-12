@@ -1,4 +1,4 @@
-import { ADD_ITEM } from '../actions/index'
+
 
 
 const initialState =
@@ -21,11 +21,13 @@ const initialState =
 
 
 export const carReducer = (state = initialState, action) => {
-    console.log('in reducer', state)
+    console.log('in reducer', action)
     switch (action.type) {
 
-        case ADD_ITEM:
+        case 'ADD_ITEM':
             return { ...state, car: { ...state.car, features: [...state.car.features, action.payload] } }
+        case 'DELETE_ITEM':
+            return { ...state, car: { ...state.car, features: [...state.car.features.filter(cur => cur.id === action.payload ? false : true)] } }
         default:
             return state
 

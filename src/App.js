@@ -1,43 +1,44 @@
 import React from 'react';
-import { createStore } from 'redux';
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
-import { carReducer } from './reducers/index';
+import { connect } from 'react-redux';
 
-import { Provider } from 'react-redux';
+import { deleteItem } from './actions/index'
 
+const App = (props) => {
 
+  const removeFeature = item => {
+    props.deleteItem(item)
+  };
 
-const store = createStore(carReducer);
-
-const App = () => {
-
-  console.log("in app", store)
-
-  // const removeFeature = item => {
-  //   // dispatch an action here to remove an item
-  // };
-
-  // const buyItem = item => {
-  //   // dipsatch an action here to add an item
-  // };
+  const buyItem = item => {
+    // dispatched in additional features component
+  };
 
   return (
-    <Provider store={store}>
-      <div className="boxes">
-        <div className="box">
-          <Header />
-          <AddedFeatures />
-        </div>
-        <div className="box">
-          <AdditionalFeatures />
-          <Total />
-        </div>
+
+    <div className="boxes">
+      <div className="box">
+        <Header />
+        <AddedFeatures removeFeature={removeFeature} />
       </div>
-    </Provider>
+      <div className="box">
+        <AdditionalFeatures />
+        <Total />
+      </div>
+    </div>
+
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+
+  return {
+
+
+  }
+}
+
+export default connect(mapStateToProps, { deleteItem })(App);
