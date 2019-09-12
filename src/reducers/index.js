@@ -25,9 +25,9 @@ export const carReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case 'ADD_ITEM':
-            return { ...state, car: { ...state.car, features: [...state.car.features, action.payload] } }
+            return { ...state, additionalPrice: action.payload.price, car: { ...state.car, features: [...state.car.features, action.payload] } }
         case 'DELETE_ITEM':
-            return { ...state, car: { ...state.car, features: [...state.car.features.filter(cur => cur.id === action.payload ? false : true)] } }
+            return { ...state, additionalPrice: -Math.abs(action.payload.price), car: { ...state.car, features: [...state.car.features.filter(cur => cur.id === action.payload.id ? false : true)] } }
         default:
             return state
 
